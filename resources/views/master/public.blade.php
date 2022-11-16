@@ -17,6 +17,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet"> 
   
+  <link rel="stylesheet" type="text/css" href="{{ asset('css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/owl.theme.default.min.css') }}">
+
   <style type="text/css">
     * {
       font-family: 'Open Sans', sans-serif;
@@ -35,7 +38,7 @@
   <body class="bg-light">
     <!-- style="background-image: linear-gradient(to right,white, #1f42ff);" -->
     <nav class="sticky-top navbar navbar-expand-lg navbar-light" style="background-image: linear-gradient(to right,white, #007bff)";>
-  <a class="navbar-brand" href="#">Nusantara Armada</a>
+  <a class="navbar-brand" href="/">Nusantara Armada</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -52,17 +55,17 @@
         <a class="nav-link" href="/about">About</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Services</a>
+        <a class="nav-link" href="#service">Services</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Article</a>
+        <a class="nav-link" href="/artikel">Article</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Contact</a>
+        <a class="nav-link" href="#contact">Contact</a>
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link btn btn-primary border text-white" href="#">Login</a>
-      </li>
+      </li> -->
     </ul>
   </div>
 
@@ -108,7 +111,7 @@
 
 @yield('content')
 
-<footer class="footer bg-primary">
+<footer class="footer bg-primary" id="contact">
       <div class="container py-5 text-center text-white">
         <span class="text-white h5">Copyright Nusantara Armada</span>
 
@@ -131,6 +134,9 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 
+    <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+    
+    @stack('scripts')
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

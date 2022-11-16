@@ -24,3 +24,7 @@ Route::get('/price', function () {
 Route::get('/about', function () {
     return view('about');
 });
+
+Route::get('/artikel', function () {
+    return view('artikel');
+});

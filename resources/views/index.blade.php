@@ -9,12 +9,12 @@
   </div>
 
   <form class="p-5" action="/price">
-    <div class="p-3 border bg-white shadow">
+    <div class="p-3 shadow" style="background-color: rgba(255, 255, 255, 0.7)">
     <div class="row">
       <div class="col-md-6">
         <div class="form-group">
           <label for="exampleInputEmail1">From</label>
-          <select class="form-control" disabled>
+          <select class="form-control rounded-pill shadow-sm" disabled>
             <option>Medan</option>
           </select>
         </div>
@@ -22,7 +22,7 @@
       <div class="col-md-6">
         <div class="form-group">
           <label for="exampleInputEmail1">Destination</label>
-          <select class="form-control">
+          <select class="form-control rounded-pill shadow-sm">
             <option>Choose</option>
             <option>Medan Kota</option>
             <option>Siantar</option>
@@ -33,13 +33,13 @@
       <div class="col-md-6">
         <div class="form-group">
           <label for="exampleInputEmail1">Start Date</label>
-          <input type="date" class="form-control" id="exampleInputPassword1">
+          <input type="date" class="form-control rounded-pill shadow-sm" id="exampleInputPassword1">
         </div>
       </div>
       <div class="col-md-6">
         <div class="form-group">
           <label for="exampleInputEmail1">End Date</label>
-          <input type="date" class="form-control" id="exampleInputPassword1">
+          <input type="date" class="form-control rounded-pill shadow-sm" id="exampleInputPassword1">
         </div>
       </div>
     </div>
@@ -104,7 +104,7 @@
 </form>
 </div>
 
-<div class="bg-white rounded shadow my-4 p-3">
+<div class="bg-white rounded shadow my-4 p-3" id="service" >
 <div class="container">
   <div class="row">
     <div class="col-md-6">
@@ -133,34 +133,57 @@
 <div class="container my-4">
   <div class="text-center display-4">Choose Fast Destination</div>
 
-  <div class="pt-5 row">
-    <div class="col-md-4">
-      <div class="card">
-        <img src="{{ asset('img/berastagi.jpg') }}" class="card-img-top" style="height: 200px;" alt="...">
-        <div class="card-body">
-          <h5 class="card-title text-center text-primary">Berastagi</h5>
+  <div class="owl-destination owl-carousel owl-theme">
+      <div class="item">
+        <div class="card">
+          <img src="{{ asset('img/berastagi.jpg') }}" class="card-img-top" style="height: 200px;" alt="...">
+          <div class="card-body">
+            <h5 class="card-title text-center text-primary">Berastagi</h5>
+            <p class="text-center">Paragraf tentang Berastagi</p>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card">
-        <img src="{{ asset('img/sidamanik.jpg') }}" class="card-img-top" style="height: 200px;" alt="...">
-        <div class="card-body">
-          <h5 class="card-title text-center text-primary">Sidamanik</h5>
+      <div class="item">
+        <div class="card">
+          <img src="{{ asset('img/sidamanik.jpg') }}" class="card-img-top" style="height: 200px;" alt="...">
+          <div class="card-body">
+            <h5 class="card-title text-center text-primary">Sidamanik</h5>
+            <p class="text-center">Paragraf tentang Sidamanik</p>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card">
-        <img src="{{ asset('img/simarjarunjung.jpg') }}" class="card-img-top" style="height: 200px;" alt="...">
-        <div class="card-body">
-          <h5 class="card-title text-center text-primary">Simarjarunjung</h5>
+      <div class="item">
+        <div class="card">
+          <img src="{{ asset('img/simarjarunjung.jpg') }}" class="card-img-top" style="height: 200px;" alt="...">
+          <div class="card-body">
+            <h5 class="card-title text-center text-primary">Simarjarunjung</h5>
+            <p class="text-center">Paragraf tentang Simarjarunjung</p>
+          </div>
         </div>
       </div>
-    </div>
   </div>
 </div>
 
 
+@push('scripts')
+  <script type="text/javascript">
+    $('.owl-destination').owlCarousel({
+            loop:true,
+            margin:10,
+            nav:false,
+            responsive:{
+                0:{
+                    items:1
+                },
+                600:{
+                    items:2
+                },
+                1000:{
+                    items:3
+                }
+            }
+        })
+  </script>
+@endpush
 
 @endsection
