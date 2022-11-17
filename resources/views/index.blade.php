@@ -2,10 +2,10 @@
 @section('content')
 
 
-<div style="background-image: url({{ asset('img/cover.jpg') }}); height:100vh;background-repeat: no-repeat; background-size: 100%;" class="d-none d-md-block">
+<div style="background-image: url({{ asset('img/alphardcover.png') }}); height:100vh;background-repeat: no-repeat; background-size: 100%;" class="d-none d-md-block">
   <div class="text-center">
-    <h1 class="py-5 display-1 text-secondary font-weight-bold">Nusantara Armada</h1>
-    <h1 class="text-center text-white border d-inline p-3 rounded-pill bg-primary" style="opacity: 0.7;">Solusi Layanan Sewa Mobil</h1>
+    <h1 class="py-md-3 py-lg-5 text-dark font-weight-bold">Nusantara Armada</h1>
+    <h1 class="text-center text-white border d-inline px-md-2 py-lg-3 rounded-pill bg-primary">Solusi Layanan Sewa Mobil</h1>
   </div>
 
   <form class="p-5" action="/price">
@@ -52,7 +52,7 @@
 <!-- FOR MOBILE -->
 <div class="d-md-none">
     
-    <img src="{{ asset('img/cover.jpg') }}" class="img-fluid">
+    <img src="{{ asset('img/alphardcover.png') }}" class="img-fluid">
     <hr>
     <div class="container text-center">
         <h1 class="text-secondary font-weight-bold h3">Nusantara Armada</h1>
@@ -186,9 +186,10 @@
 
 <div class="container rounded shadow bg-white p-3 my-3">
   <h1 class="text-muted">Artikel Nusantara Armada</h1>
-        <div class="my-4 row">
+
+          <div class="owl-destination owl-carousel owl-theme">
           @for($i=0;$i < 3;$i++)
-          <div class="col-md-4 mb-2">
+          <div class="item mb-2">
               <div class="card">
                 <img src="{{ asset('img/berastagi.jpg') }}" class="card-img-top" style="height: 200px;" alt="...">
                 <div class="card-body">
@@ -198,7 +199,7 @@
               </div>  
             </div>
             @endfor
-        </div>
+          </div>
         
              
         </div>
