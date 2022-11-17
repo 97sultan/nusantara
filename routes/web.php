@@ -14,7 +14,7 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/', function () {
-    $provinsi = \App\Models\Province::whereIn('id',[11,12,13,14,15])->get();
+    $provinsi = \App\Models\Province::whereIn('id',[11,12,13,14])->get();
     return view('index',[
         'provinsi' => $provinsi
     ]);
