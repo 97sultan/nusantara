@@ -20,6 +20,9 @@
   <link rel="stylesheet" type="text/css" href="{{ asset('css/owl.carousel.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/owl.theme.default.min.css') }}">
 
+
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@x.x.x/dist/select2-bootstrap4.min.css">
   <style type="text/css">
     * {
       font-family: 'Open Sans', sans-serif;
@@ -136,6 +139,13 @@
 
     <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
     
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script type="text/javascript">
+      $('.select2').select2({
+        theme: 'bootstrap4'
+      });
+    </script>
     @stack('scripts')
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--

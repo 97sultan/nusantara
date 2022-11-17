@@ -14,7 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
+    $kecamatan = \App\Models\District::whereRaw("LEFT(id,2)",[11,12,13,14,15])->get();
+    return view('index',[
+        'kecamatan' => $kecamatan
+    ]);
 });
 
 Route::get('/price', function () {

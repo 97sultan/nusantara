@@ -22,11 +22,11 @@
       <div class="col-md-6">
         <div class="form-group">
           <label for="exampleInputEmail1">Destination</label>
-          <select class="form-control rounded-pill shadow-sm">
+          <select class="form-control select2">
             <option>Choose</option>
-            <option>Medan Kota</option>
-            <option>Siantar</option>
-            <option>Berastagi</option>
+            @foreach($kecamatan as $item)
+              <option>{{ $item->name }}</option>
+            @endforeach
           </select>
         </div>
       </div>
@@ -210,6 +210,7 @@
             loop:true,
             margin:10,
             nav:false,
+            autoplay:true,
             responsive:{
                 0:{
                     items:1
