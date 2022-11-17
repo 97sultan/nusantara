@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,10 +14,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $kecamatan = \App\Models\District::whereRaw("LEFT(id,2)",[11,12,13,14,15])->get();
+    $provinsi = \App\Models\Province::whereIn('id',[11,12,13,14,15])->get();
     return view('index',[
-        'kecamatan' => $kecamatan
+        'provinsi' => $provinsi
     ]);
+});
+
+// Route::get('/kecamatan/{}', HomeController::class,'kecamatan');
+
+Route::get('/kabupaten/{id}', function ($id) {
+    $kabupaten = \App\Models\Regency::where("province_id",$id)->get();
+    return response()->json($kabupaten);
+});
+
+Route::get('/kecamatan/{id}', function ($id) {
+    $kabupaten = \App\Models\District::where("regency_id",$id)->get();
+    return response()->json($kabupaten);
 });
 
 Route::get('/price', function () {

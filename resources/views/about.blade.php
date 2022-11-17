@@ -2,7 +2,7 @@
 @section('content')
 
     <div class="container">
-        <img src="{{ asset('img/rentcar.png') }}" class="img-fluid" style="height: 500px; width: 100%;">
+        <img src="{{ asset('img/about.jpg') }}" class="img-fluid" style="height: 500px; width: 100%;">
         
         <h1>About Us</h1>
         

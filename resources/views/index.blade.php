@@ -22,12 +22,12 @@
       <div class="col-md-6">
         <div class="form-group">
           <label for="exampleInputEmail1">Destination</label>
-          <select class="form-control select2">
-            <option>Choose</option>
-            @foreach($kecamatan as $item)
-              <option>{{ $item->name }}</option>
-            @endforeach
-          </select>
+          <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
+            Pilih Destination
+          </button>
+
+          <input type="text" class="form-control rounded-pill shadow-sm" id="destination" readonly>
+          
         </div>
       </div>
       <div class="col-md-6">
@@ -77,12 +77,10 @@
       <div class="col-md-6">
         <div class="form-group">
           <label for="exampleInputEmail1">Destination</label>
-          <select class="form-control">
-            <option>Choose</option>
-            <option>Medan Kota</option>
-            <option>Siantar</option>
-            <option>Berastagi</option>
-          </select>
+          <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
+            Pilih Destination
+          </button>
+          <input type="text" class="form-control rounded-pill shadow-sm" id="destinationMobile" readonly>
         </div>
       </div>
       <div class="col-md-6">
@@ -187,7 +185,7 @@
 <div class="container rounded shadow bg-white p-3 my-3">
   <h1 class="text-muted">Artikel Nusantara Armada</h1>
 
-          <div class="owl-destination owl-carousel owl-theme">
+          <div class="owl-article owl-carousel owl-theme">
           @for($i=0;$i < 3;$i++)
           <div class="item mb-2">
               <div class="card">
@@ -204,13 +202,122 @@
              
         </div>
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Pilih Destination</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Provinsi</label>
+          <select class="form-control rounded-pill shadow-sm select2" id="provinsi">
+            <option>Choose</option>
+            @foreach($provinsi as $item)
+              <option value="{{ $item->id }}">{{ $item->name }}</option>
+            @endforeach
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Kabupaten</label>
+          <select class="form-control rounded-pill shadow-sm select2" id="kabupaten">
+            <option>Choose</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Kecamatan</label>
+          <select class="form-control rounded-pill shadow-sm select2" id="kecamatan">
+            <option>Choose</option>
+          </select>
+        </div>
+
+        <button id="btnModal" class="btn btn-primary btn-block rounded-pill mt-3">Pilih</button>
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> -->
+    </div>
+  </div>
+</div>
+
 @push('scripts')
+
+  <script type="text/javascript">
+    $('#provinsi').change(function(){
+      let val = $(this).val();
+
+      $('#kabupaten').html('<option>Choose</option>');
+      $.ajax({
+          url: "/kabupaten/"+val,
+          success: function(res) {
+            let html = '';
+            $.each(res, function( index, value ) {
+              html += `<option value="${value.id}">${value.name}</option>`
+            });
+
+            $('#kabupaten').append(html);
+          }
+      });
+    });
+
+    $('#kabupaten').change(function(){
+      let val = $(this).val();
+
+      $('#kecamatan').text('<option>Choose</option>');
+      $.ajax({
+          url: "/kecamatan/"+val,
+          success: function(res) {
+            let html = '';
+            $.each(res, function( index, value ) {
+              html += `<option value="${value.id}">${value.name}</option>`
+            });
+
+            $('#kecamatan').append(html);
+          }
+      });
+    });
+
+    $('#btnModal').click(function() {
+      var provinsi = $('#provinsi option:selected').text();
+      var kabupaten = $('#kabupaten option:selected').text();
+      var kecamatan = $('#kecamatan option:selected').text();
+      $('#destination').val(`${provinsi} - ${kabupaten} - ${kecamatan}`)
+      $('#destinationMobile').val(`${provinsi} - ${kabupaten} - ${kecamatan}`)
+      
+      $('#exampleModal').modal('toggle');
+    })
+  </script>
+
   <script type="text/javascript">
     $('.owl-destination').owlCarousel({
             loop:true,
             margin:10,
             nav:false,
             autoplay:true,
+            responsive:{
+                0:{
+                    items:1
+                },
+                600:{
+                    items:2
+                },
+                1000:{
+                    items:3
+                }
+            }
+        })
+
+    $('.owl-article').owlCarousel({
+            loop:true,
+            margin:10,
+            nav:false,
             responsive:{
                 0:{
                     items:1
