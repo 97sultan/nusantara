@@ -104,27 +104,47 @@
 </form>
 </div>
 
-<div class="bg-white rounded shadow my-4 p-3" id="service" >
+<div class="my-4 p-3" id="service" >
 <div class="container">
   <div class="row">
     <div class="col-md-6">
       <img src="{{ asset('img/cover1.jpg') }}" class="img-fluid">
     </div>    
     <div class="col-md-6 my-auto">
-      <div class="display-3">Nikmatin Perjalanmu Bersama Kami</div>
+      <img src="{{ asset('img/cover2.jpg') }}" class="img-fluid">
     </div>
   </div>
 </div>
 </div>
 
-<div class="bg-white rounded shadow my-4 p-3">
+<div class="shadow my-4 p-3" style="background-color: #9cf;">
 <div class="container">
   <div class="row">
     <div class="col-md-6 my-auto">
-      <div class="display-3">Kunjungi Destinasimu Dengan Mudah</div>
+      <div class="display-4">Kunjungi Destinasimu Dengan Mudah</div>
     </div>    
     <div class="col-md-6">
-      <img src="{{ asset('img/cover2.jpg') }}" class="img-fluid">
+      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img class="d-block w-100 rounded" src="{{ asset('img/dest1.jpg') }}" alt="First slide">
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-100 rounded" src="{{ asset('img/dest2.jpg') }}" alt="Second slide">
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-100 rounded" src="{{ asset('img/dest3.jpg') }}" alt="Third slide">
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
     </div>
   </div>
 </div>
@@ -164,6 +184,24 @@
   </div>
 </div>
 
+<div class="container rounded shadow bg-white p-3 my-3">
+  <h1 class="text-muted">Artikel Nusantara Armada</h1>
+        <div class="my-4 row">
+          @for($i=0;$i < 3;$i++)
+          <div class="col-md-4 mb-2">
+              <div class="card">
+                <img src="{{ asset('img/berastagi.jpg') }}" class="card-img-top" style="height: 200px;" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title text-center text-primary">Wisata Baru d Berastagi</h5>
+                  <p class="text-center">senin, 17 Juni 2022, Pemerintah Kota Medan Baru saja meresmikan ...</p>
+                </div>
+              </div>  
+            </div>
+            @endfor
+        </div>
+        
+             
+        </div>
 
 @push('scripts')
   <script type="text/javascript">

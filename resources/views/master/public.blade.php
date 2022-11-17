@@ -55,13 +55,13 @@
         <a class="nav-link" href="/about">About</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#service">Services</a>
+        <a class="nav-link" href="/#service">Services</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/artikel">Article</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#contact">Contact</a>
+        <a class="nav-link" href="/#contact">Contact</a>
       </li>
       <!-- <li class="nav-item">
         <a class="nav-link btn btn-primary border text-white" href="#">Login</a>

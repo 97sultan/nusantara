@@ -2,7 +2,13 @@
 @section('content')
     
     <h1 class="text-center my-4">Artikel</h1>
-    
+    <p class="text-center text-muted">Banyak artikel menarik untukmu</p>
+
+    <div class="container text-center ">
+      <a href="" class="btn btn-outline-primary rounded-pill">Wisata</a>  
+      <a href="" class="btn btn-outline-danger rounded-pill">Kota</a>  
+      <a href="" class="btn btn-outline-warning rounded-pill">Mobil</a>  
+    </div>
 
     <div class="container bg-white p-3 my-3">
         <div class="border my-4 row">
@@ -21,7 +27,6 @@
         
              
         </div>
-    </div>
 
 
 @endsection

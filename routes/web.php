@@ -28,3 +28,8 @@ Route::get('/about', function () {
 Route::get('/artikel', function () {
     return view('artikel');
 });
+Auth::routes([
+    'reset' => false
+]);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
