@@ -2,7 +2,7 @@
 @section('content')
 
 
-<div style="background-image: url({{ asset('img/home.jpg') }}); height:100vh;background-repeat: no-repeat; background-size: 100%;" class="d-none d-md-block">
+<div style="background-image: url({{ asset('img/home.jpg') }}); background-repeat: no-repeat; background-size: 100%;" class="d-none d-md-block">
   <div class="text-center">
     <h1 class="py-md-3 py-lg-5 text-dark font-weight-bold">Nusantara Armada</h1>
     <h1 class="text-center text-white border d-inline px-md-2 py-lg-3 rounded-pill bg-primary">Solusi Layanan Sewa Mobil</h1>
@@ -115,8 +115,8 @@
 </div>
 </div> -->
 
-<div class="shadow my-4 p-3" style="background-color: #9cf;">
-<div class="container">
+<div class="shadow my-4" style="background-color: #9cf;">
+<div class="container p-3">
   <div class="row">
     <div class="col-md-6 my-auto">
       <div class="display-4">Kunjungi Destinasimu Dengan Mudah</div>
