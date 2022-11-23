@@ -124,24 +124,25 @@
   </div>
 </div>
 </div> -->
-
-<div class="shadow my-4" style="background-color: #9cf;">
+<!-- 9cf -->
+<div class="shadow my-4" style="background-color: #d5eaff;">
 <div class="container p-3">
   <div class="row">
     <div class="col-md-6 my-auto">
-      <div class="display-4">Kunjungi Destinasimu Dengan Mudah</div>
+      <div class="d-none d-lg-block display-4">Kunjungi Destinasimu Dengan Mudah</div>
+      <div class="d-lg-none h1">Kunjungi Destinasimu Dengan Mudah</div>
     </div>    
     <div class="col-md-6">
       <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img class="d-block w-100 rounded" src="{{ asset('img/dest1.jpg') }}" alt="Destinasi - Nusantara Armada">
+            <img class="img-fluid rounded my-5" src="{{ asset('img/dest1.jpg') }}" alt="Destinasi - Nusantara Armada" style="width: 500px;">
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100 rounded" src="{{ asset('img/dest2.jpg') }}" alt="Destinasi - Nusantara Armada">
+            <img class="img-fluid rounded my-5" src="{{ asset('img/dest2.jpg') }}" alt="Destinasi - Nusantara Armada" style="width: 500px;">
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100 rounded" src="{{ asset('img/dest3.jpg') }}" alt="Destinasi - Nusantara Armada">
+            <img class="img-fluid rounded my-5" src="{{ asset('img/dest3.jpg') }}" alt="Destinasi - Nusantara Armada" style="width: 500px;">
           </div>
         </div>
         <!-- <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -158,7 +159,7 @@
 </div>
 </div>
 
-<div class="container my-4">
+<div class="container-fluid my-4">
   <!-- <div class="text-center display-4">Choose Fast Destination</div> -->
 
   <div class="owl-destination owl-carousel owl-theme">
@@ -299,10 +300,10 @@
                     items:1
                 },
                 600:{
-                    items:2
+                    items:3
                 },
                 1000:{
-                    items:3
+                    items:4
                 }
             }
         })
