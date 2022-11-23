@@ -2,7 +2,7 @@
 @section('content')
 
 
-<div style="background-image: url({{ asset('img/cover.jpg') }}); background-repeat: no-repeat; background-size: 100% 100%; height: 90vh;" >
+<div class="d-none d-md-block" style="background-image: url({{ asset('img/revisi/cover.jpg') }}); background-repeat: no-repeat; background-size: 100% 100%; height: 90vh;" >
   <!-- class="d-none d-md-block" -->
   <div class="text-center">
     <!-- <h1 class="py-md-3 py-lg-5 text-dark font-weight-bold">Nusantara Armada</h1> -->
@@ -59,57 +59,60 @@
 </div>
 
 <!-- FOR MOBILE -->
-<!-- d-md-none -->
-<div class="d-none">
-    
-    <img src="{{ asset('img/cover.jpg') }}" class="img-fluid">
-    <hr>
-    <div class="container text-center">
-        <h1 class="text-secondary font-weight-bold h3">Nusantara Armada</h1>
-        <h1 class="text-center text-white border p-3 rounded-pill bg-primary h4" style="opacity: 0.7;">Solusi Layanan Sewa Mobil</h1>
-    </div>
-    
-    <hr>
-    
-    <form action="/price">
-        
-    <div class="p-3 border bg-white shadow">
-        <h2 class="text-center">Check Price</h2>
+<div class="d-md-none" style="background-image: url({{ asset('img/revisi/cover-mobile.jpg') }}); background-repeat: no-repeat; background-size: 100% 100%; height: 90vh;" >
+  <!-- class="d-none d-md-block" -->
+  <div class="text-center">
+    <!-- <h1 class="py-md-3 py-lg-5 text-dark font-weight-bold">Nusantara Armada</h1> -->
+    <!-- <h1 class="text-center text-white border d-inline px-md-2 py-lg-3 rounded-pill bg-primary">Solusi Layanan Sewa Mobil</h1> -->
+  </div>
+
+  <div class="container h-100">
+    <div class="row h-100">
+    <div class="col align-self-end mb-3">
+  <form action="/price">
+    <div class="p-3 shadow rounded" style="background-color: rgba(0, 0, 0, 0.3)">
     <div class="row">
       <div class="col-md-6">
-      <div class="form-group">
-          <label for="exampleInputEmail1">From</label>
-          <select class="form-control" disabled>
+        <div class="form-group">
+          <label for="exampleInputEmail1" class="text-white">From</label>
+          <select class="form-control rounded-pill shadow-sm" disabled>
             <option>Medan</option>
           </select>
         </div>
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          <label for="exampleInputEmail1">Destination</label>
-          <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
+          <label for="exampleInputEmail1" class="text-white">Destination</label>
+          <button type="button" class="btn btn-primary border btn-sm" data-toggle="modal" data-target="#exampleModal">
             Pilih Destination
           </button>
-          <input type="text" class="form-control rounded-pill shadow-sm" id="destinationMobile" readonly>
+
+          <input type="text" class="form-control rounded-pill shadow-sm" id="destination" readonly>
+          
         </div>
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          <label for="exampleInputEmail1">Start Date</label>
-          <input type="date" class="form-control" id="exampleInputPassword1">
+          <label for="exampleInputEmail1" class="text-white">Start Date</label>
+          <input type="date" class="form-control rounded-pill shadow-sm" id="exampleInputPassword1">
         </div>
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          <label for="exampleInputEmail1">End Date</label>
-          <input type="date" class="form-control" id="exampleInputPassword1">
+          <label for="exampleInputEmail1" class="text-white">End Date</label>
+          <input type="date" class="form-control rounded-pill shadow-sm" id="exampleInputPassword1">
         </div>
       </div>
     </div>
 
-    <button type="submit" class="btn btn-primary">Check Price</button>
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary btn-lg rounded-pill ">Check Price</button>
+    </div>
   </div>
 </form>
+</div>
+</div>
+</div>
 </div>
 
 <!-- <div class="my-4 p-3" id="service" >
@@ -126,37 +129,17 @@
 </div> -->
 <!-- 9cf -->
 <div class="shadow my-4" style="background-color: #d5eaff;">
-<div class="container p-3">
-  <div class="row">
-    <div class="col-md-6 my-auto">
-      <div class="d-none d-lg-block display-4">Kunjungi Destinasimu Dengan Mudah</div>
-      <div class="d-lg-none h1">Kunjungi Destinasimu Dengan Mudah</div>
-    </div>    
-    <div class="col-md-6">
-      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img class="img-fluid rounded my-5" src="{{ asset('img/dest1.jpg') }}" alt="Destinasi - Nusantara Armada" style="width: 500px;">
-          </div>
-          <div class="carousel-item">
-            <img class="img-fluid rounded my-5" src="{{ asset('img/dest2.jpg') }}" alt="Destinasi - Nusantara Armada" style="width: 500px;">
-          </div>
-          <div class="carousel-item">
-            <img class="img-fluid rounded my-5" src="{{ asset('img/dest3.jpg') }}" alt="Destinasi - Nusantara Armada" style="width: 500px;">
-          </div>
-        </div>
-        <!-- <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a> -->
-      </div>
+
+  <div class="h1 text-center py-3 font-weight-light">Kunjungi Destinasimu Dengan Mudah</div>
+
+  <div class="owl-slide owl-carousel owl-theme">
+    @foreach($slider as $item)
+    <div class="item">
+      <img src="{{ asset('uploads/slider/'. $item->image) }}" alt="{{$item->name}} - Nusantara Armada" style="height: 400px;">
     </div>
+    @endforeach
   </div>
-</div>
+
 </div>
 
 <div class="container-fluid my-4">
@@ -165,33 +148,17 @@
   <div class="owl-destination owl-carousel owl-theme">
     @foreach($destination as $item)
       <div class="item">
-        <div class="card">
-          <img src="{{ asset('uploads/destination/'.$item->image) }}" class="card-img-top" style="height: 200px;" alt="{{ $item->name }} | Nusantara Armada">
-          <div class="card-body">
-            <h5 class="card-title text-center text-primary">{{ $item->name }}</h5>
-            <p class="text-center">{!! $item->description !!}</p>
+        <a href="/destination/{{ $item->slug }}" class="text-decoration-none">
+          <div class="card">
+            <img src="{{ asset('uploads/destination/'.$item->image) }}" class="card-img-top" style="height: 200px;" alt="{{ $item->name }} | Nusantara Armada">
+            <div class="card-body">
+              <h5 class="card-title text-center text-primary">{{ $item->name }}</h5>
+              <div class="text-dark">{!! $item->description !!}</div>
+            </div>
           </div>
-        </div>
+        </a>
       </div>
     @endforeach
-      <!-- <div class="item">
-        <div class="card">
-          <img src="{{ asset('img/sidamanik.jpg') }}" class="card-img-top" style="height: 200px;" alt="...">
-          <div class="card-body">
-            <h5 class="card-title text-center text-primary">Sidamanik</h5>
-            <p class="text-center">Paragraf tentang Sidamanik</p>
-          </div>
-        </div>
-      </div>
-      <div class="item">
-        <div class="card">
-          <img src="{{ asset('img/simarjarunjung.jpg') }}" class="card-img-top" style="height: 200px;" alt="...">
-          <div class="card-body">
-            <h5 class="card-title text-center text-primary">Simarjarunjung</h5>
-            <p class="text-center">Paragraf tentang Simarjarunjung</p>
-          </div>
-        </div>
-      </div> -->
   </div>
 </div>
 
@@ -290,6 +257,17 @@
   </script>
 
   <script type="text/javascript">
+    $('.owl-slide').owlCarousel({
+      autoplay: true,
+      dots: false,
+      loop: true,
+      animateOut: 'fadeOut',
+      animateIn: 'fadeIn',
+      items:1,
+      margin:30,
+      // smartSpeed:450
+    });
+
     $('.owl-destination').owlCarousel({
             loop:true,
             margin:10,

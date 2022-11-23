@@ -23,6 +23,9 @@
 
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@x.x.x/dist/select2-bootstrap4.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
   <style type="text/css">
     * {
       font-family: 'Open Sans', sans-serif;
@@ -79,7 +82,7 @@
 
     <!-- style="background-image: linear-gradient(to right,white, #1f42ff);" -->
     <nav class="sticky-top navbar navbar-expand-lg navbar-light shadow" style="background-image: linear-gradient(to right,white, #007bff)";>
-  <a class="navbar-brand" href="/"><img src="{{ asset('img/logo.png') }}" class="img-fluid" style="width: 150px;" alt="Logo Nusantara Armada"></a>
+  <a class="navbar-brand" href="/"><img src="{{ asset('img/revisi/logo2.png') }}" class="img-fluid" style="width: 150px;" alt="Logo Nusantara Armada"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>

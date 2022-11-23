@@ -15,7 +15,7 @@ class CreateDestinationsTable extends Migration
     {
         Schema::create('destinations', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->unique();
             $table->string('image');
             $table->text('description');
             $table->integer('provinsi_id');
@@ -23,6 +23,7 @@ class CreateDestinationsTable extends Migration
             $table->integer('kecamatan_id');
             $table->integer('Kelurahan_id');
             $table->string('address');
+            $table->string('slug');
             $table->timestamps();
         });
     }

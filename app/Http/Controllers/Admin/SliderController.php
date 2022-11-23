@@ -7,81 +7,99 @@ use App\Models\Slider;
 use App\Http\Requests\StoreSliderRequest;
 use App\Http\Requests\UpdateSliderRequest;
 
+use Illuminate\Support\Facades\File;
+
 class SliderController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+   public function index()
     {
-        //
+        $slider = Slider::latest()->get();
+        
+        return view('admin.slider.index', [
+            'slider' => $slider,
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        $action = 'add';
+
+        return view('admin.slider.save', [
+            'action' => $action,
+        ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreSliderRequest  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(StoreSliderRequest $request)
     {
-        //
+        $image = $request->file('image');
+
+        $filename='';
+        if ($image != '') {
+            $filename = uniqid().$image->getClientOriginalName();
+        }
+
+        $insert = $request->all();
+        $insert['image'] = $filename;
+
+        Slider::create($insert);
+
+        // PROSES UPLOAD
+        if ($image != '') {
+            $path = 'uploads/slider/';
+            $image->move($path,$filename);
+        }
+
+        return redirect()->route('slider.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Slider  $slider
-     * @return \Illuminate\Http\Response
-     */
     public function show(Slider $slider)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Slider  $slider
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Slider $slider)
     {
-        //
+        $action = 'edit';
+
+        return view('admin.slider.save',[
+            'action' => $action,
+            'row' => $slider,
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateSliderRequest  $request
-     * @param  \App\Models\Slider  $slider
-     * @return \Illuminate\Http\Response
-     */
     public function update(UpdateSliderRequest $request, Slider $slider)
     {
-        //
+        $image = $request->file('image');
+        $filename = $slider->image;
+        $imageOld = $slider->image;
+
+        if ($image != '') {
+            $filename = uniqid().$image->getClientOriginalName();
+        } 
+
+        $update = $request->all();
+        $update['image'] = $filename;
+
+        $slider->update($update);
+
+        // PROSES UPLOAD
+        if ($image != '') {
+            $path = 'uploads/slider/';
+            $image->move($path,$filename);
+
+            File::delete($path.$imageOld);
+        }
+
+        return redirect()->route('slider.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Slider  $slider
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Slider $slider)
     {
-        //
+        $image = $slider->image;
+
+        $slider->delete();
+        File::delete('uploads/slider/'.$slider->image);
+        
+        return redirect()->route('slider.index');
     }
 }

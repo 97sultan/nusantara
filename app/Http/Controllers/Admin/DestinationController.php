@@ -8,6 +8,7 @@ use App\Http\Requests\StoreDestinationRequest;
 use App\Http\Requests\UpdateDestinationRequest;
 
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 class DestinationController extends Controller
 {
@@ -43,6 +44,7 @@ class DestinationController extends Controller
 
         $insert = $request->all();
         $insert['address'] = $insert['address'] ?? '';
+        $insert['slug'] = Str::slug($insert['name'], '-');
         $insert['image'] = $filename;
 
         Destination::create($insert);
@@ -85,6 +87,7 @@ class DestinationController extends Controller
 
         $update = $request->all();
         $update['address'] = $update['address'] ?? '';
+        $update['slug'] = Str::slug($update['name'], '-');
         $update['image'] = $filename;
 
         $destination->update($update);

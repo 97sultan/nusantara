@@ -38,7 +38,7 @@
                     
                 	<form method="post" action="{{ route('car.destroy', $item->id) }}" class="d-inline-block">
                 		{!! method_field('delete') . csrf_field() !!}
-                		<button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                		<button class="btn btn-sm btn-danger" onclick="if (!confirm('Yakin ingin menghapus data ?')) { return false }"><i class="fas fa-trash"></i></button>
                 	</form>
                 </td>
             </tr> 
