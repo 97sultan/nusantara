@@ -56,12 +56,12 @@ Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/destination/{slug}', function ($slug = '') {
+Route::get('/destination/{slug?}', function ($slug = '') {
     $all = \App\Models\Destination::all();
 
     foreach ($all as $item) {
         $d = \App\Models\Destination::find($item->id);
-        $d->slug = Illuminate\Support\Str::slug($item->name, '-');
+        $d->slug = \Illuminate\Support\Str::slug($item->name, '-');
         $d->save();
     }
 
