@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Admin\{DashboardController,CarController,DestinationController};
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,11 +16,15 @@ use App\Http\Controllers\HomeController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// $role = Role::create(['name' => 'admin']);
 
 Route::get('/', function () {
     $provinsi = \App\Models\Province::whereIn('id',[11,12,13,14])->get();
+    $destination = \App\Models\Destination::latest()->get();
+
     return view('index',[
-        'provinsi' => $provinsi
+        'provinsi' => $provinsi,
+        'destination' => $destination
     ]);
 });
 
@@ -32,6 +40,12 @@ Route::get('/kecamatan/{id}', function ($id) {
     return response()->json($kabupaten);
 });
 
+Route::get('/kelurahan/{id}', function ($id) {
+    $kelurahan = \App\Models\Village::where("district_id",$id)->get();
+    return response()->json($kelurahan);
+});
+
+
 Route::get('/price', function () {
     return view('price');
 });
@@ -40,11 +54,23 @@ Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/artikel', function () {
-    return view('artikel');
+Route::get('/destination', function () {
+    return view('destination');
 });
 Auth::routes([
     'reset' => false
 ]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::prefix('admin')->middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class,'dashboard']);
+    Route::match(['get','post'],'/content', [DashboardController::class,'content']);
+
+    Route::resources([
+        'car' => CarController::class,
+        'destination' => DestinationController::class,
+    ]);
+
+    Route::match(['get', 'post'], '/user/changepassword', [DashboardController::class,'changepassword']);
+});

@@ -2,18 +2,22 @@
 @section('content')
 
 
-<div style="background-image: url({{ asset('img/home.jpg') }}); background-repeat: no-repeat; background-size: 100% 100%; height: 90vh;" class="d-none d-md-block">
+<div style="background-image: url({{ asset('img/cover.jpg') }}); background-repeat: no-repeat; background-size: 100% 100%; height: 90vh;" >
+  <!-- class="d-none d-md-block" -->
   <div class="text-center">
-    <h1 class="py-md-3 py-lg-5 text-dark font-weight-bold">Nusantara Armada</h1>
-    <h1 class="text-center text-white border d-inline px-md-2 py-lg-3 rounded-pill bg-primary">Solusi Layanan Sewa Mobil</h1>
+    <!-- <h1 class="py-md-3 py-lg-5 text-dark font-weight-bold">Nusantara Armada</h1> -->
+    <!-- <h1 class="text-center text-white border d-inline px-md-2 py-lg-3 rounded-pill bg-primary">Solusi Layanan Sewa Mobil</h1> -->
   </div>
 
-  <form class="p-5" action="/price">
-    <div class="p-3 shadow" style="background-color: rgba(255, 255, 255, 0.7)">
+  <div class="container h-100">
+    <div class="row h-100">
+    <div class="col align-self-end mb-3">
+  <form action="/price">
+    <div class="p-3 shadow rounded" style="background-color: rgba(0, 0, 0, 0.3)">
     <div class="row">
       <div class="col-md-6">
         <div class="form-group">
-          <label for="exampleInputEmail1">From</label>
+          <label for="exampleInputEmail1" class="text-white">From</label>
           <select class="form-control rounded-pill shadow-sm" disabled>
             <option>Medan</option>
           </select>
@@ -21,8 +25,8 @@
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          <label for="exampleInputEmail1">Destination</label>
-          <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
+          <label for="exampleInputEmail1" class="text-white">Destination</label>
+          <button type="button" class="btn btn-primary border btn-sm" data-toggle="modal" data-target="#exampleModal">
             Pilih Destination
           </button>
 
@@ -32,27 +36,33 @@
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          <label for="exampleInputEmail1">Start Date</label>
+          <label for="exampleInputEmail1" class="text-white">Start Date</label>
           <input type="date" class="form-control rounded-pill shadow-sm" id="exampleInputPassword1">
         </div>
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          <label for="exampleInputEmail1">End Date</label>
+          <label for="exampleInputEmail1" class="text-white">End Date</label>
           <input type="date" class="form-control rounded-pill shadow-sm" id="exampleInputPassword1">
         </div>
       </div>
     </div>
 
-    <button type="submit" class="btn btn-primary">Check Price</button>
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary btn-lg rounded-pill ">Check Price</button>
+    </div>
   </div>
 </form>
 </div>
+</div>
+</div>
+</div>
 
 <!-- FOR MOBILE -->
-<div class="d-md-none">
+<!-- d-md-none -->
+<div class="d-none">
     
-    <img src="{{ asset('img/home.jpg') }}" class="img-fluid">
+    <img src="{{ asset('img/cover.jpg') }}" class="img-fluid">
     <hr>
     <div class="container text-center">
         <h1 class="text-secondary font-weight-bold h3">Nusantara Armada</h1>
@@ -125,13 +135,13 @@
       <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img class="d-block w-100 rounded" src="{{ asset('img/dest1.jpg') }}" alt="First slide">
+            <img class="d-block w-100 rounded" src="{{ asset('img/dest1.jpg') }}" alt="Destinasi - Nusantara Armada">
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100 rounded" src="{{ asset('img/dest2.jpg') }}" alt="Second slide">
+            <img class="d-block w-100 rounded" src="{{ asset('img/dest2.jpg') }}" alt="Destinasi - Nusantara Armada">
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100 rounded" src="{{ asset('img/dest3.jpg') }}" alt="Third slide">
+            <img class="d-block w-100 rounded" src="{{ asset('img/dest3.jpg') }}" alt="Destinasi - Nusantara Armada">
           </div>
         </div>
         <!-- <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -152,16 +162,18 @@
   <!-- <div class="text-center display-4">Choose Fast Destination</div> -->
 
   <div class="owl-destination owl-carousel owl-theme">
+    @foreach($destination as $item)
       <div class="item">
         <div class="card">
-          <img src="{{ asset('img/berastagi.jpg') }}" class="card-img-top" style="height: 200px;" alt="...">
+          <img src="{{ asset('uploads/destination/'.$item->image) }}" class="card-img-top" style="height: 200px;" alt="{{ $item->name }} | Nusantara Armada">
           <div class="card-body">
-            <h5 class="card-title text-center text-primary">Berastagi</h5>
-            <p class="text-center">Paragraf tentang Berastagi</p>
+            <h5 class="card-title text-center text-primary">{{ $item->name }}</h5>
+            <p class="text-center">{!! $item->description !!}</p>
           </div>
         </div>
       </div>
-      <div class="item">
+    @endforeach
+      <!-- <div class="item">
         <div class="card">
           <img src="{{ asset('img/sidamanik.jpg') }}" class="card-img-top" style="height: 200px;" alt="...">
           <div class="card-body">
@@ -178,29 +190,10 @@
             <p class="text-center">Paragraf tentang Simarjarunjung</p>
           </div>
         </div>
-      </div>
+      </div> -->
   </div>
 </div>
 
-<div class="container rounded shadow bg-white p-3 my-3">
-  <h1 class="text-muted">Artikel Nusantara Armada</h1>
-
-          <div class="owl-article owl-carousel owl-theme">
-          @for($i=0;$i < 3;$i++)
-          <div class="item mb-2">
-              <div class="card">
-                <img src="{{ asset('img/berastagi.jpg') }}" class="card-img-top" style="height: 200px;" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title text-center text-primary">Wisata Baru d Berastagi</h5>
-                  <p class="text-center">senin, 17 Juni 2022, Pemerintah Kota Medan Baru saja meresmikan ...</p>
-                </div>
-              </div>  
-            </div>
-            @endfor
-          </div>
-        
-             
-        </div>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

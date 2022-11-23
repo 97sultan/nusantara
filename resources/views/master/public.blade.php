@@ -36,12 +36,50 @@
       background-color: lightblue;
       border-radius: 5px;
     }
+
+    .float{
+      position:fixed;
+      width:60px;
+      height:60px;
+      bottom:40px;
+      right:40px;
+      background-color:#25d366;
+      color:#FFF;
+      border-radius:50px;
+      text-align:center;
+      font-size:35px;
+      /*box-shadow: 2px 2px 3px #999;*/
+      z-index:2;
+    }
+
+    .float:hover{
+      color: green;
+      /*margin-top:18px !important;*/
+    }
+
   </style>
   </head>
   <body class="bg-light">
+
+    @php
+      $option = new \App\Models\Option();
+      $row = [
+          'name' => $option->where('name','name')->first()->value,
+          'phone' => $option->where('name','phone')->first()->value,
+          'wa' => $option->where('name','wa')->first()->value,
+          'email' => $option->where('name','email')->first()->value,
+          'instagram' => $option->where('name','instagram')->first()->value,
+          'facebook' => $option->where('name','facebook')->first()->value,
+      ];
+    @endphp
+
+    <a href="https://wa.me/{{ $row['wa'] }}" class="float" target="_blank">
+      <i class="bi bi-whatsapp my-float"></i>
+    </a>
+
     <!-- style="background-image: linear-gradient(to right,white, #1f42ff);" -->
-    <nav class="sticky-top navbar navbar-expand-lg navbar-light" style="background-image: linear-gradient(to right,white, #007bff)";>
-  <a class="navbar-brand" href="/">Nusantara Armada</a>
+    <nav class="sticky-top navbar navbar-expand-lg navbar-light shadow" style="background-image: linear-gradient(to right,white, #007bff)";>
+  <a class="navbar-brand" href="/"><img src="{{ asset('img/logo.png') }}" class="img-fluid" style="width: 150px;" alt="Logo Nusantara Armada"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -52,23 +90,46 @@
 <div class="ml-auto">
     <ul class="navbar-nav" id="navMain">
       <li class="nav-item">
-        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link text-white" href="/">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/about">About</a>
+        <a class="nav-link text-white" href="/about">About</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/#service">Services</a>
+        <a class="nav-link text-white" href="/#service">Services</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/artikel">Article</a>
+        <a class="nav-link text-white" href="/destination">Destination</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/#contact">Contact</a>
+        <a class="nav-link text-white" href="/#contact">Contact</a>
       </li>
-      <!-- <li class="nav-item">
-        <a class="nav-link btn btn-primary border text-white" href="#">Login</a>
-      </li> -->
+      <li class="nav-item">
+        @guest
+            @if (Route::has('login'))
+                <button class="nav-link btn btn-primary border text-white" type="button" data-toggle="modal" data-target="#loginModal">Login</button>
+            @endif
+        @else
+        <div class="dropdown">
+          <button class="btn btn-primary border dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+            {{ Auth::user()->name }}
+          </button>
+          <div class="dropdown-menu dropdown-menu-right shadow">
+            <a class="dropdown-item" href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                                     document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+          </div>
+        </div>
+        @endguest
+
+        
+      </li>
     </ul>
   </div>
 
@@ -117,24 +178,69 @@
 <footer class="footer bg-primary" id="contact">
       <div class="container py-5 text-center text-white">
         <span class="text-white h5">Copyright Nusantara Armada</span>
-
+        
         <div class="pt-3">
-          <i class="bi bi-instagram h3"></i>
-          <i class="bi bi-facebook h3 mx-3"></i>
-          <i class="bi bi-whatsapp h3"></i>
+          @if ($row['instagram'] != '')
+          <a href="{{ $row['instagram'] }}" class="text-white" target="_blank">
+            <i class="bi bi-instagram h3"></i>
+          </a>
+          @endif
+
+          @if ($row['facebook'] != '')
+          <a href="{{ $row['facebook'] }}" class="text-white" target="_blank">
+            <i class="bi bi-facebook h3 mx-3"></i>
+          </a>
+          @endif
 
           <div class="">
             <div class="h5 pt-3">Contact Us</div>
-            <div>+62 62 62 62 62 62 </div>
-            <div>nusantara-armada@gmail.com</div>
+            <div>{{ $row['phone'] }}</div>
+            <div>{{ $row['email'] }}</div>
           </div>
         </div>
       </div>
     </footer>
+
+    <!-- Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="{{ route('login') }}">
+          @csrf
+          <div class="form-group mt-5">
+            <input type="email" name="email" class="form-control form-control-lg rounded-pill shadow-sm" id="exampleInputPassword1" placeholder="Email" required>
+          </div>
+
+          <div class="form-group my-4">
+            <input type="password" name="password" class="form-control form-control-lg rounded-pill shadow-sm" id="exampleInputPassword1" placeholder="Password" required>
+          </div>
+
+          <!-- <p>Tidak punya akun ? <a href="/register">Daftar</a></p> -->
+
+          <button type="submit" class="btn btn-outline-primary btn-lg btn-block rounded-pill">Login</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 
     <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
@@ -148,10 +254,10 @@
     </script>
     @stack('scripts')
     <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
-    -->
+    
+    <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> -->
+    
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script> -->
+    
   </body>
 </html>
