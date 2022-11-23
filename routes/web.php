@@ -57,14 +57,6 @@ Route::get('/about', function () {
 });
 
 Route::get('/destination/{slug?}', function ($slug = '') {
-    $all = \App\Models\Destination::all();
-
-    foreach ($all as $item) {
-        $d = \App\Models\Destination::find($item->id);
-        $d->slug = \Illuminate\Support\Str::slug($item->name, '-');
-        $d->save();
-    }
-
     if ($slug == '') {
         return view('destination');
     } else {

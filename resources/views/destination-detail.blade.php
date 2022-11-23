@@ -2,11 +2,15 @@
 @section('content')
 	
 	<div class="container my-5">
-		<h1>{{ $row->name }}</h1>
+		<div class="card p-4">
+			<h1 class="text-center">{{ $row->name }}</h1>
 
-		<img src="{{ asset('uploads/destination/'.$row->image) }}" class="img-fluid">
+			<div class="text-center">
+				<img src="{{ asset('uploads/destination/'.$row->image) }}" class="img-fluid" style="width: 500px;">
+			</div>
 
-		<div>{!! $item->description !!}</div>
+			<div class="mt-4">{!! $row->description !!}</div>
+		</div>
 	</div>
 
 @endsection
