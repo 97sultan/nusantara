@@ -153,7 +153,6 @@
             <img src="{{ asset('uploads/destination/'.$item->image) }}" class="card-img-top" style="height: 200px;" alt="{{ $item->name }} | Nusantara Armada">
             <div class="card-body">
               <h5 class="card-title text-center text-primary">{{ $item->name }}</h5>
-              <div class="text-dark">{!! $item->description !!}</div>
             </div>
           </div>
         </a>
