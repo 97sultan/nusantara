@@ -24,7 +24,7 @@ class StoreDestinationRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
+            'name' => 'required|unique:destinations',
             'image' => 'required|image',
             'description' => 'required',
         ];
