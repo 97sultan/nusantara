@@ -115,18 +115,29 @@
 </div>
 </div>
 
-<!-- <div class="my-4 p-3" id="service" >
+<div class="my-4 p-3" id="service" >
 <div class="container">
+  <div class="text-center h3">Our Services</div>
   <div class="row">
     <div class="col-md-6">
-      <img src="{{ asset('img/cover1.jpg') }}" class="img-fluid">
+        <div class="text-center">
+      <i class="bi bi-car-front display-4 text-primary"></i>
+
+      <p class="text-muted">Kami menyediakan layanan sewa mobil korporat dari jangka waktu harian, mingguan, bulanan hingga tahunan dilengkapi dengan banyak pilihan jenis kendaraan yang dapat dipilih untuk lebih mendukung operasional perusahaan Anda</p>
+      </div>
     </div>    
-    <div class="col-md-6 my-auto">
-      <img src="{{ asset('img/cover2.jpg') }}" class="img-fluid">
+    <div class="col-md-6">
+        <div class="text-center">
+          <i class="bi bi-geo-alt display-4 text-primary"></i>
+
+          <p class="text-muted">Sewa Jangka Pendek
+Paket sewa mobil lengkap yang ideal untuk penggunaan korporat  hanya untuk Drop off saja.</p>
+      </div>
     </div>
   </div>
 </div>
-</div> -->
+</div>
+
 <!-- 9cf -->
 <div class="shadow my-4" style="background-color: #d5eaff;">
 
