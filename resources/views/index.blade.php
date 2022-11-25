@@ -122,14 +122,14 @@
     <div class="col-md-6">
         <div class="text-center">
       <i class="bi bi-car-front display-4 text-primary"></i>
-
+      <div class="h4">Rent a Car</div>
       <p class="text-muted">Kami menyediakan layanan sewa mobil korporat dari jangka waktu harian, mingguan, bulanan hingga tahunan dilengkapi dengan banyak pilihan jenis kendaraan yang dapat dipilih untuk lebih mendukung operasional perusahaan Anda</p>
       </div>
     </div>    
     <div class="col-md-6">
         <div class="text-center">
           <i class="bi bi-geo-alt display-4 text-primary"></i>
-
+          <div class="h4">Drop Off</div>
           <p class="text-muted">Sewa Jangka Pendek
 Paket sewa mobil lengkap yang ideal untuk penggunaan korporat  hanya untuk Drop off saja.</p>
       </div>
