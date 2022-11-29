@@ -19,8 +19,10 @@
             <tr>
                 <th>No</th>
                 <th>Name</th>
-                <th>Price In City</th>
-                <th>Price Out City</th>
+                <th>In Town</th>
+                <th>Out Town</th>
+                <th>Dropoff In Town</th>
+                <th>Dropoff Out Town</th>
                 <th>Image</th>
                 <th>Aksi</th>
             </tr>
@@ -32,6 +34,8 @@
                 <td>{{ $item->name }}</td>
                 <td>{{ number_format($item->price_in) }}</td>
                 <td>{{ number_format($item->price_out) }}</td>
+                <td>{{ number_format($item->dropoff_in) }}</td>
+                <td>{{ number_format($item->dropoff_out) }}</td>
                 <td><img src="{{ asset('uploads/car/'.$item->image) }}" clss="img-fluid" width="70"></td>
                 <td>
                   <a href="{{ route('car.edit' , $item->id) }}" class="btn btn-sm btn-warning"><i class="fas fa-pencil"></i></a>

@@ -27,29 +27,58 @@
         <div class="form-group">
           <label for="exampleInputEmail1" class="text-white">Destination</label>
           <button type="button" class="btn btn-primary border btn-sm" data-toggle="modal" data-target="#exampleModal">
-            Pilih Destination
+            Choose Destination
           </button>
 
-          <input type="text" class="form-control rounded-pill shadow-sm" id="destination" readonly>
+          <input type="text" class="form-control rounded-pill shadow-sm" id="destination" name="destination" readonly>
           
         </div>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-4">
         <div class="form-group">
           <label for="exampleInputEmail1" class="text-white">Start Date</label>
-          <input type="date" class="form-control rounded-pill shadow-sm" id="exampleInputPassword1">
+          <input type="date" name="dari" class="form-control rounded-pill shadow-sm" id="exampleInputPassword1" required>
         </div>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-4">
         <div class="form-group">
           <label for="exampleInputEmail1" class="text-white">End Date</label>
-          <input type="date" class="form-control rounded-pill shadow-sm" id="exampleInputPassword1">
+          <input type="date" name="sampai" class="form-control rounded-pill shadow-sm" id="exampleInputPassword1" required>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="exampleInputEmail1" class="text-white">Type Rent</label>
+          <select class="form-control rounded-pill shadow-sm" name="type" >
+            <option value="rent">Rent a Car</option>
+            <option value="dropoff">Drop Off</option>
+          </select>
         </div>
       </div>
     </div>
 
     <div class="text-center">
-      <button type="submit" class="btn btn-primary btn-lg rounded-pill ">Check Price</button>
+      @if(Session::has('success'))
+            <div class="alert alert-success">
+                {{session('success')}}
+            </div>
+          @elseif (Session::has('error'))
+            <div class="alert alert-danger" role="alert">
+                {{ session('error') }}
+            </div>
+          @endif
+
+          @if ($errors->any())
+              <div class="alert alert-danger">
+                  <ul>
+                      @foreach ($errors->all() as $error)
+                          <li>{{ $error }}</li>
+                      @endforeach
+                  </ul>
+              </div>
+          @endif
+
+      <button type="submit" class="btn btn-primary btn-lg rounded-pill">Check Rates</button>
     </div>
   </div>
 </form>
@@ -84,28 +113,57 @@
         <div class="form-group">
           <label for="exampleInputEmail1" class="text-white">Destination</label>
           <button type="button" class="btn btn-primary border btn-sm" data-toggle="modal" data-target="#exampleModal">
-            Pilih Destination
+            Choose Destination
           </button>
 
-          <input type="text" class="form-control rounded-pill shadow-sm" id="destination" readonly>
+          <input type="text" name="destination" class="form-control rounded-pill shadow-sm" id="destination" readonly>
           
         </div>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-4">
         <div class="form-group">
           <label for="exampleInputEmail1" class="text-white">Start Date</label>
-          <input type="date" class="form-control rounded-pill shadow-sm" id="exampleInputPassword1">
+          <input type="date" name="dari" class="form-control rounded-pill shadow-sm" id="exampleInputPassword1">
         </div>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-4">
         <div class="form-group">
           <label for="exampleInputEmail1" class="text-white">End Date</label>
-          <input type="date" class="form-control rounded-pill shadow-sm" id="exampleInputPassword1">
+          <input type="date" name="sampai" class="form-control rounded-pill shadow-sm" id="exampleInputPassword1">
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="exampleInputEmail1" class="text-white">Type Rent</label>
+          <select class="form-control rounded-pill shadow-sm" name="type" >
+            <option value="rent">Rent a Car</option>
+            <option value="dropoff">Drop Off</option>
+          </select>
         </div>
       </div>
     </div>
 
     <div class="text-center">
+      @if(Session::has('success'))
+            <div class="alert alert-success">
+                {{session('success')}}
+            </div>
+          @elseif (Session::has('error'))
+            <div class="alert alert-danger" role="alert">
+                {{ session('error') }}
+            </div>
+          @endif
+
+          @if ($errors->any())
+              <div class="alert alert-danger">
+                  <ul>
+                      @foreach ($errors->all() as $error)
+                          <li>{{ $error }}</li>
+                      @endforeach
+                  </ul>
+              </div>
+          @endif
+
       <button type="submit" class="btn btn-primary btn-lg rounded-pill ">Check Price</button>
     </div>
   </div>
@@ -115,6 +173,8 @@
 </div>
 </div>
 
+
+
 <div class="my-4 p-3" id="service" >
 <div class="container">
   <div class="text-center h3">Our Services</div>
@@ -123,15 +183,18 @@
         <div class="text-center">
       <i class="bi bi-car-front display-4 text-primary"></i>
       <div class="h4">Rent a Car</div>
-      <p class="text-muted">Kami menyediakan layanan sewa mobil korporat dari jangka waktu harian, mingguan, bulanan hingga tahunan dilengkapi dengan banyak pilihan jenis kendaraan yang dapat dipilih untuk lebih mendukung operasional perusahaan Anda</p>
+      <p class="text-muted">Kami menyediakan layanan sewa mobil korporat dari jangka waktu harian, mingguan,
+bulanan hingga tahunan dengan pilihan armada yang lengkap untuk lebih mendukung
+operasional perusahaan anda.</p>
       </div>
     </div>    
     <div class="col-md-6">
         <div class="text-center">
           <i class="bi bi-geo-alt display-4 text-primary"></i>
           <div class="h4">Drop Off</div>
-          <p class="text-muted">Sewa Jangka Pendek.
-Paket sewa mobil lengkap yang ideal untuk penggunaan korporat  hanya untuk Drop off saja.</p>
+          <p class="text-muted">Kami juga menyediakan Paket sewa mobil Jangka Pendek lengkap yang ideal untuk
+penggunaan korporat. Sewa Jangka Pendek hanya untuk Drop off saja dari satu titik
+penjemputan ke titik tujuan dengan nyaman.</p>
       </div>
     </div>
   </div>
@@ -141,7 +204,7 @@ Paket sewa mobil lengkap yang ideal untuk penggunaan korporat  hanya untuk Drop 
 <!-- 9cf -->
 <div class="shadow my-4" style="background-color: #d5eaff;">
 
-  <div class="h1 text-center py-3 font-weight-light">Kunjungi Destinasimu Dengan Mudah</div>
+  <div class="h1 text-center py-3 font-weight-light">Visit Your Destination Easyly</div>
 
   <div class="owl-slide owl-carousel owl-theme">
     @foreach($slider as $item)
@@ -174,11 +237,11 @@ Paket sewa mobil lengkap yang ideal untuk penggunaan korporat  hanya untuk Drop 
 
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" style="overflow:hidden;" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Pilih Destination</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Choose Destination</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -187,7 +250,7 @@ Paket sewa mobil lengkap yang ideal untuk penggunaan korporat  hanya untuk Drop 
         <div class="form-group">
           <label>Provinsi</label>
           <select class="form-control rounded-pill shadow-sm select2" id="provinsi">
-            <option>Choose</option>
+            <option value="">Choose</option>
             @foreach($provinsi as $item)
               <option value="{{ $item->id }}">{{ $item->name }}</option>
             @endforeach
@@ -197,18 +260,18 @@ Paket sewa mobil lengkap yang ideal untuk penggunaan korporat  hanya untuk Drop 
         <div class="form-group">
           <label>Kabupaten</label>
           <select class="form-control rounded-pill shadow-sm select2" id="kabupaten">
-            <option>Choose</option>
+            <option value="">Choose</option>
           </select>
         </div>
 
         <div class="form-group">
           <label>Kecamatan</label>
           <select class="form-control rounded-pill shadow-sm select2" id="kecamatan">
-            <option>Choose</option>
+            <option value="">Choose</option>
           </select>
         </div>
 
-        <button id="btnModal" class="btn btn-primary btn-block rounded-pill mt-3">Pilih</button>
+        <button id="btnModal" class="btn btn-primary btn-block rounded-pill mt-3">Choose</button>
       </div>
       <!-- <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -259,6 +322,13 @@ Paket sewa mobil lengkap yang ideal untuk penggunaan korporat  hanya untuk Drop 
       var provinsi = $('#provinsi option:selected').text();
       var kabupaten = $('#kabupaten option:selected').text();
       var kecamatan = $('#kecamatan option:selected').text();
+
+      if (provinsi == 'Choose' || kabupaten == 'Choose' || kecamatan == 'Choose') 
+      {
+        alert('All Destination are required');
+        return false;
+      }
+
       $('#destination').val(`${provinsi} - ${kabupaten} - ${kecamatan}`)
       $('#destinationMobile').val(`${provinsi} - ${kabupaten} - ${kecamatan}`)
       

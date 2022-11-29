@@ -18,6 +18,8 @@ class CreateCarsTable extends Migration
             $table->string('name');
             $table->integer('price_in');
             $table->integer('price_out');
+            $table->integer('dropoff_in');
+            $table->integer('dropoff_out');
             $table->string('image');
             $table->timestamps();
         });

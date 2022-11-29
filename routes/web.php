@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\{DashboardController,CarController,DestinationCon
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -48,8 +49,37 @@ Route::get('/kelurahan/{id}', function ($id) {
 });
 
 
-Route::get('/price', function () {
-    return view('price');
+Route::get('/price', function (Request $request) {
+    $dari = $request->dari;
+    $sampai = $request->sampai;
+    $destination = $request->destination;
+    if ($dari > $sampai) {
+        return redirect()->back()->withErrors('Dates must true');
+    }
+
+    if ($destination == '') {
+        return redirect()->back()->withErrors('Destination are required');
+    }
+
+    $arr = explode(' - ',$request->destination);
+
+    $townType = 'out';
+    if (strtoupper($arr[1]) == 'KOTA MEDAN') {
+        $townType = 'in';
+    }
+
+    $car = \App\Models\Car::all();
+
+    $datetime1 = new DateTime($dari);
+    $datetime2 = new DateTime($sampai);
+    $difference = $datetime1->diff($datetime2);
+    $day = $difference->d+1;
+    
+    return view('price',[
+        'car' => $car,
+        'day' => $day,
+        'townType' => $townType
+    ]);
 });
 
 Route::get('/about', function () {
@@ -58,7 +88,12 @@ Route::get('/about', function () {
 
 Route::get('/destination/{slug?}', function ($slug = '') {
     if ($slug == '') {
-        return view('destination');
+        $destination = \App\Models\Destination::latest()->get();
+
+        return view('destination',[
+            'destination' => $destination
+        ]);
+
     } else {
         $row = \App\Models\Destination::where('slug',$slug)->first();
 

@@ -43,6 +43,8 @@ class CarController extends Controller
         $insert = $request->all();
         $insert['price_in'] = $this->removeSeparator($insert['price_in']);
         $insert['price_out'] = $this->removeSeparator($insert['price_out']);
+        $insert['dropoff_in'] = $this->removeSeparator($insert['dropoff_in']);
+        $insert['dropoff_out'] = $this->removeSeparator($insert['dropoff_out']);
         $insert['image'] = $filename;
 
         Car::create($insert);
@@ -84,6 +86,8 @@ class CarController extends Controller
         $update = $request->all();
         $update['price_in'] = $this->removeSeparator($update['price_in']);
         $update['price_out'] = $this->removeSeparator($update['price_out']);
+        $update['dropoff_in'] = $this->removeSeparator($update['dropoff_in']);
+        $update['dropoff_out'] = $this->removeSeparator($update['dropoff_out']);
         $update['image'] = $filename;
 
         $car->update($update);

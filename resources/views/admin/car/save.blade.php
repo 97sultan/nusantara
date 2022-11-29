@@ -34,13 +34,23 @@
     </div>
 
     <div class="form-group">
-        <label for="kategori">Price in Per Day</label>
+        <label for="kategori">Price in Town</label>
         <input type="text" class="form-control" oninput="separatorNumber(this)" name="price_in" value="{{ number_format(@$row->price_in) }}" required>
     </div>
 
     <div class="form-group">
-        <label for="kategori">Price Out Per Day</label>
+        <label for="kategori">Price Out Town</label>
         <input type="text" class="form-control" oninput="separatorNumber(this)" name="price_out" value="{{ number_format(@$row->price_out) }}" required>
+    </div>
+
+    <div class="form-group">
+        <label for="kategori">Dropoff In</label>
+        <input type="text" class="form-control" oninput="separatorNumber(this)" name="dropoff_in" value="{{ number_format(@$row->dropoff_in) }}" required>
+    </div>
+
+    <div class="form-group">
+        <label for="kategori">Dropoff Out</label>
+        <input type="text" class="form-control" oninput="separatorNumber(this)" name="dropoff_out" value="{{ number_format(@$row->dropoff_out) }}" required>
     </div>
 
     <button type="submit" class="btn btn-primary mt-3">Save</button>
