@@ -168,7 +168,7 @@ penjemputan ke titik tujuan dengan nyaman.</p>
         </button>
       </div>
       <div class="modal-body">
-        <div class="form-group" id="provinsiForm">
+        <div class="form-group">
           <label>Provinsi</label>
           <select class="form-control rounded-pill shadow-sm select2" id="provinsi">
             <option value="">Choose</option>
@@ -178,7 +178,7 @@ penjemputan ke titik tujuan dengan nyaman.</p>
           </select>
         </div>
 
-        <div class="form-group" id="kabupatenForm">
+        <div class="form-group">
           <label>Kabupaten</label>
           <select class="form-control rounded-pill shadow-sm select2" id="kabupaten">
             <option value="">Choose</option>
@@ -210,33 +210,21 @@ penjemputan ke titik tujuan dengan nyaman.</p>
         switch ($(this).val()) {
           case 'rent':
             $('#rentACar').show();
-
-            $('#provinsiForm').show();
-            $('#kabupatenForm').show();
             break;
           case 'dropoff':
             $('#rentACar').hide();
-
-            $('#provinsiForm').hide();
-            $('#kabupatenForm').hide();
-
-            $('#provinsi').val(12).change();
-            $('#provinsi').trigger('change');
-            
-            $('#kabupaten').val(1275).change();
-            $('#kabupaten').trigger('change');
-
             break;
         }
       });
 
     $('#provinsi').change(function(){
       let val = $(this).val();
+      let isDropoff = $('#exampleRadios2').is(':checked');
 
       $('#kabupaten').html('<option>Choose</option>');
       $.ajax({
           async: false,
-          url: "/kabupaten/"+val,
+          url: "/kabupaten/"+val+'/?type='+isDropoff,
           success: function(res) {
             let html = '';
             $.each(res, function( index, value ) {

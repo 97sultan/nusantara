@@ -33,9 +33,16 @@ Route::get('/', function () {
 
 // Route::get('/kecamatan/{}', HomeController::class,'kecamatan');
 
-Route::get('/kabupaten/{id}', function ($id) {
-    $kabupaten = \App\Models\Regency::where("province_id",$id)->get();
-    return response()->json($kabupaten);
+Route::get('/kabupaten/{id}', function (Request $request,$id) {
+    $kabupaten = \App\Models\Regency::where("province_id",$id);
+
+    if ($id == 12) {
+        if ($request->type == 'true') {
+            $kabupaten->where('id','!=',1275);
+        }
+    }
+    
+    return response()->json($kabupaten->get());
 });
 
 Route::get('/kecamatan/{id}', function ($id) {

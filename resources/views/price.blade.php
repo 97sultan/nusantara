@@ -102,6 +102,16 @@
           <input type="hidden" name="harga" id="harga">
 
           <div class="form-group my-4">
+            <label>Pickup Point</label>
+            <textarea class="form-control" name="pickup"></textarea>
+          </div>
+
+          <div class="form-group my-4">
+            <label>Time Pickup</label>
+            <input type="time" name="time" class="form-control">
+          </div>
+
+          <div class="form-group my-4">
             <label>Note</label>
             <textarea class="form-control" name="note"></textarea>
           </div>
