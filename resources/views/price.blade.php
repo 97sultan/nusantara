@@ -23,7 +23,13 @@
           <tr>
             <th>Date</th>
             <td>:</td>
-            <td>{{ date('d-m-Y',strtotime(Request::get('dari'))) }} - {{ date('d-m-Y',strtotime(Request::get('sampai'))) }}</td>
+            <td>
+              @if ($type == 'rent')
+            {{ date('d-m-Y',strtotime(Request::get('dari'))) }} - {{ date('d-m-Y',strtotime(Request::get('sampai'))) }} ( {{ $day==1?$day.' day' : $day. ' days' }} )
+            @else
+            {{ date('d-m-Y',strtotime(Request::get('dari'))) }}
+            @endif
+            </td>
           </tr>
           <tr>
             <th>Type</th>

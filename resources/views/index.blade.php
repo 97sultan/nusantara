@@ -2,7 +2,7 @@
 @section('content')
 
 
-<div class="d-none d-md-block" style="background-image: url({{ asset('img/revisi/cover.jpg') }}); background-repeat: no-repeat; background-size: 100% 100%; height: 90vh;" >
+<div class="" style="background-image: url({{ asset('img/revisi/cover.jpg') }}); background-repeat: no-repeat; background-size: 100% 100%; height: 90vh;" >
   <!-- class="d-none d-md-block" -->
   <div class="text-center">
     <!-- <h1 class="py-md-3 py-lg-5 text-dark font-weight-bold">Nusantara Armada</h1> -->
@@ -14,48 +14,56 @@
     <div class="col align-self-end mb-3">
   <form action="/price">
     <div class="p-3 shadow rounded" style="background-color: rgba(0, 0, 0, 0.3)">
-    <div class="row">
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="exampleInputEmail1" class="text-white">From</label>
-          <select class="form-control rounded-pill shadow-sm" disabled>
-            <option>Medan</option>
-          </select>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="exampleInputEmail1" class="text-white">Destination</label>
-          <button type="button" class="btn btn-primary border btn-sm" data-toggle="modal" data-target="#exampleModal">
-            Choose Destination
-          </button>
 
-          <input type="text" class="form-control rounded-pill shadow-sm" id="destination" name="destination" readonly>
-          
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="type" id="exampleRadios1" value="rent" checked>
+  <label class="form-check-label text-white" for="exampleRadios1">Rent a Car</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="type" id="exampleRadios2" value="dropoff">
+  <label class="form-check-label text-white" for="exampleRadios2">Drop Off</label>
+</div>
+  
+    
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="exampleInputEmail1" class="text-white">From</label>
+            <select class="form-control rounded-pill shadow-sm" disabled>
+              <option>Medan</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="exampleInputEmail1" class="text-white">Destination</label>
+            <button type="button" class="btn btn-primary border btn-sm" data-toggle="modal" data-target="#exampleModal">
+              Choose Destination
+            </button>
+
+            <input type="text" class="form-control rounded-pill shadow-sm" id="destination" name="destination" readonly>
+            
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="exampleInputEmail1" class="text-white">Start Date</label>
+                <input type="date" name="dari" class="form-control rounded-pill shadow-sm" id="exampleInputPassword1" required>
+              </div>
+            </div>
+            <div id="rentACar" class="col-md-6">
+              <div class="form-group">
+                <label for="exampleInputEmail1" class="text-white">End Date</label>
+                <input type="date" name="sampai" class="form-control rounded-pill shadow-sm" id="exampleInputPassword1">
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="form-group">
-          <label for="exampleInputEmail1" class="text-white">Start Date</label>
-          <input type="date" name="dari" class="form-control rounded-pill shadow-sm" id="exampleInputPassword1" required>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="form-group">
-          <label for="exampleInputEmail1" class="text-white">End Date</label>
-          <input type="date" name="sampai" class="form-control rounded-pill shadow-sm" id="exampleInputPassword1" required>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="form-group">
-          <label for="exampleInputEmail1" class="text-white">Type Rent</label>
-          <select class="form-control rounded-pill shadow-sm" name="type" >
-            <option value="rent">Rent a Car</option>
-            <option value="dropoff">Drop Off</option>
-          </select>
-        </div>
-      </div>
-    </div>
+    
 
     <div class="text-center">
       @if(Session::has('success'))
@@ -86,93 +94,6 @@
 </div>
 </div>
 </div>
-
-<!-- FOR MOBILE -->
-<div class="d-md-none" style="background-image: url({{ asset('img/revisi/cover-mobile.jpg') }}); background-repeat: no-repeat; background-size: 100% 100%; height: 90vh;" >
-  <!-- class="d-none d-md-block" -->
-  <div class="text-center">
-    <!-- <h1 class="py-md-3 py-lg-5 text-dark font-weight-bold">Nusantara Armada</h1> -->
-    <!-- <h1 class="text-center text-white border d-inline px-md-2 py-lg-3 rounded-pill bg-primary">Solusi Layanan Sewa Mobil</h1> -->
-  </div>
-
-  <div class="container h-100">
-    <div class="row h-100">
-    <div class="col align-self-end mb-3">
-  <form action="/price">
-    <div class="p-3 shadow rounded" style="background-color: rgba(0, 0, 0, 0.3)">
-    <div class="row">
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="exampleInputEmail1" class="text-white">From</label>
-          <select class="form-control rounded-pill shadow-sm" disabled>
-            <option>Medan</option>
-          </select>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="exampleInputEmail1" class="text-white">Destination</label>
-          <button type="button" class="btn btn-primary border btn-sm" data-toggle="modal" data-target="#exampleModal">
-            Choose Destination
-          </button>
-
-          <input type="text" name="destination" class="form-control rounded-pill shadow-sm" id="destination" readonly>
-          
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="form-group">
-          <label for="exampleInputEmail1" class="text-white">Start Date</label>
-          <input type="date" name="dari" class="form-control rounded-pill shadow-sm" id="exampleInputPassword1">
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="form-group">
-          <label for="exampleInputEmail1" class="text-white">End Date</label>
-          <input type="date" name="sampai" class="form-control rounded-pill shadow-sm" id="exampleInputPassword1">
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="form-group">
-          <label for="exampleInputEmail1" class="text-white">Type Rent</label>
-          <select class="form-control rounded-pill shadow-sm" name="type" >
-            <option value="rent">Rent a Car</option>
-            <option value="dropoff">Drop Off</option>
-          </select>
-        </div>
-      </div>
-    </div>
-
-    <div class="text-center">
-      @if(Session::has('success'))
-            <div class="alert alert-success">
-                {{session('success')}}
-            </div>
-          @elseif (Session::has('error'))
-            <div class="alert alert-danger" role="alert">
-                {{ session('error') }}
-            </div>
-          @endif
-
-          @if ($errors->any())
-              <div class="alert alert-danger">
-                  <ul>
-                      @foreach ($errors->all() as $error)
-                          <li>{{ $error }}</li>
-                      @endforeach
-                  </ul>
-              </div>
-          @endif
-
-      <button type="submit" class="btn btn-primary btn-lg rounded-pill ">Check Price</button>
-    </div>
-  </div>
-</form>
-</div>
-</div>
-</div>
-</div>
-
 
 
 <div class="my-4 p-3" id="service" >
@@ -247,7 +168,7 @@ penjemputan ke titik tujuan dengan nyaman.</p>
         </button>
       </div>
       <div class="modal-body">
-        <div class="form-group">
+        <div class="form-group" id="provinsiForm">
           <label>Provinsi</label>
           <select class="form-control rounded-pill shadow-sm select2" id="provinsi">
             <option value="">Choose</option>
@@ -257,7 +178,7 @@ penjemputan ke titik tujuan dengan nyaman.</p>
           </select>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" id="kabupatenForm">
           <label>Kabupaten</label>
           <select class="form-control rounded-pill shadow-sm select2" id="kabupaten">
             <option value="">Choose</option>
@@ -284,11 +205,37 @@ penjemputan ke titik tujuan dengan nyaman.</p>
 @push('scripts')
 
   <script type="text/javascript">
+
+    $('input[type=radio][name=type]').on('change', function() {
+        switch ($(this).val()) {
+          case 'rent':
+            $('#rentACar').show();
+
+            $('#provinsiForm').show();
+            $('#kabupatenForm').show();
+            break;
+          case 'dropoff':
+            $('#rentACar').hide();
+
+            $('#provinsiForm').hide();
+            $('#kabupatenForm').hide();
+
+            $('#provinsi').val(12).change();
+            $('#provinsi').trigger('change');
+            
+            $('#kabupaten').val(1275).change();
+            $('#kabupaten').trigger('change');
+
+            break;
+        }
+      });
+
     $('#provinsi').change(function(){
       let val = $(this).val();
 
       $('#kabupaten').html('<option>Choose</option>');
       $.ajax({
+          async: false,
           url: "/kabupaten/"+val,
           success: function(res) {
             let html = '';
@@ -330,7 +277,7 @@ penjemputan ke titik tujuan dengan nyaman.</p>
       }
 
       $('#destination').val(`${provinsi} - ${kabupaten} - ${kecamatan}`)
-      $('#destinationMobile').val(`${provinsi} - ${kabupaten} - ${kecamatan}`)
+      // $('#destinationMobile').val(`${provinsi} - ${kabupaten} - ${kecamatan}`)
       
       $('#exampleModal').modal('toggle');
     })

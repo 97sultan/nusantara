@@ -82,7 +82,7 @@
 
     <!-- style="background-image: linear-gradient(to right,white, #1f42ff);" -->
     <nav class="sticky-top navbar navbar-expand-lg navbar-light shadow" style="background-image: linear-gradient(to right,white, #007bff)";>
-  <a class="navbar-brand" href="/"><img src="{{ asset('img/revisi/logo2.png') }}" class="img-fluid" style="width: 150px;" alt="Logo Nusantara Armada"></a>
+  <a class="navbar-brand" href="/"><img src="{{ asset('img/revisi/logo3.png') }}" class="img-fluid" style="width: 120px;" alt="Logo Nusantara Armada"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -217,15 +217,24 @@
       <div class="modal-body">
         <form method="post" action="{{ route('login') }}">
           @csrf
-          <div class="form-group mt-5">
-            <input type="email" name="email" class="form-control form-control-lg rounded-pill shadow-sm" id="exampleInputPassword1" placeholder="Email" required>
+          <div class="input-group mt-5">
+            <span class="input-group-text" id="basic-addon1"><i class="bi bi-person-fill"></i></span>
+            <input type="email" name="email" class="form-control form-control-lg shadow-sm" id="exampleInputPassword1" aria-describedby="basic-addon1" placeholder="Email" required style="border-radius: 0 2rem 2rem 0;">
+            <!-- <span class="input-group-text" id="basic-addon2" style="border-radius: 0 2rem 2rem 0;"><i class="bi bi-people fs-4"></i></span> -->
           </div>
 
-          <div class="form-group my-4">
-            <input type="password" name="password" class="form-control form-control-lg rounded-pill shadow-sm" id="exampleInputPassword1" placeholder="Password" required>
+          <div class="input-group my-4">
+            <span class="input-group-text" id="basic-addon2"><i class="bi bi-key-fill"></i></span>
+            <input type="password" name="password" class="form-control form-control-lg shadow-sm" id="exampleInputPassword1" placeholder="Password" aria-describedby="basic-addon2" required style="border-radius: 0 2rem 2rem 0;">
           </div>
 
-          <!-- <p>Tidak punya akun ? <a href="/register">Daftar</a></p> -->
+          @if (Route::has('password.request'))
+              <!-- <a class="" href="{{ route('password.request') }}">
+                  {{ __('Forgot Your Password?') }}
+              </a> -->
+          @endif
+
+          <p>Tidak punya akun ? <a href="/register">Daftar</a></p>
 
           <button type="submit" class="btn btn-outline-primary btn-lg btn-block rounded-pill">Login</button>
         </form>

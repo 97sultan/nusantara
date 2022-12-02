@@ -53,8 +53,12 @@ Route::get('/price', function (Request $request) {
     $dari = $request->dari;
     $sampai = $request->sampai;
     $destination = $request->destination;
-    if ($dari > $sampai) {
-        return redirect()->back()->withErrors('Dates must true');
+    $type = $request->type;
+
+    if ($type == 'rent') {
+        if ($dari > $sampai) {
+            return redirect()->back()->withErrors('Dates must true');
+        }
     }
 
     if ($destination == '') {
@@ -105,7 +109,7 @@ Route::get('/destination/{slug?}', function ($slug = '') {
 });
 
 Auth::routes([
-    'reset' => false
+    // 'reset' => false
 ]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
